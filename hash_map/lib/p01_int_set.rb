@@ -5,16 +5,16 @@ class MaxIntSet
   end
 
   def insert(num)
-    raise "Out of bounds" unless is_valid?(num)
+    validate!(num)
     @store[num] = true
   end
 
   def remove(num)
+    validate!(num)
     @store[num] = false
   end
 
   def include?(num)
-    # debugger
     @store[num]
   end
 
@@ -25,6 +25,7 @@ class MaxIntSet
   end
 
   def validate!(num)
+    raise "Out of bounds" unless is_valid?(num)
   end
 end
 
@@ -111,14 +112,15 @@ class ResizingIntSet
   end
 
   def resize!
-    temp_store = Array.new(num_buckets * 2) { Array.new }
-    new_buckets = num_buckets * 2
-    @store.each do |bucket|
+    old_store = @store
+    @count = 0
+    @store = Array.new(num_buckets * 2) { Array.new }
+    old_store.each do |bucket|
       bucket.each do |el|
-        temp_store[el % new_buckets].push(el)
+        insert(el)
       end
     end
-      @store = temp_store
+      @store
   end
 
 end
