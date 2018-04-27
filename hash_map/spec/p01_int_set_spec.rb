@@ -1,5 +1,7 @@
 require 'rspec'
 require 'p01_int_set'
+require 'byebug'
+
 
 describe MaxIntSet do
   let(:set) { MaxIntSet.new(50) }
@@ -10,7 +12,9 @@ describe MaxIntSet do
     end
 
     it "should return true if the number has been inserted" do
+
       set.insert(1)
+      # debugger
       expect(set).to include(1)
     end
   end
