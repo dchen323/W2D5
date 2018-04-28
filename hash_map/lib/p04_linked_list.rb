@@ -1,5 +1,5 @@
 require 'byebug'
-include Enumerable
+
 class Node
   attr_accessor :key, :val, :next, :prev
 
@@ -21,6 +21,9 @@ class Node
 end
 
 class LinkedList
+
+  include Enumerable
+
   def initialize
     @head = Node.new
     @tail = Node.new
@@ -77,6 +80,7 @@ class LinkedList
   end
 
   def update(key, val)
+    # debugger
     node = find_node(key)
     node.nil? ? nil : node.val = val
   end
