@@ -75,7 +75,7 @@ class HashMap
     @count = 0
     @store = Array.new(num_buckets * 2) { Array.new }
     old_store.each do |linked_list|
-      # linked_list.
+      linked_list.
     end
       @store
   end
